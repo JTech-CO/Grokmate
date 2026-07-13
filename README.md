@@ -10,7 +10,7 @@ Grokmate는 xAI Grok 4.3 위에서 동작하는 디스코드 봇으로, **범용
 
 **호출** — `그록아` · `Hey Grok` · `@Grokmate` · DM · **전용 AI 채널**(지정 시 멘션 없이) 중 하나로 부르면 응답합니다. 메시지마다 일반·검색·코딩·서버 관리·성인 모드를 자동 판정하고, 반말 친근체로 답합니다(한국어·영어, 서버별 존댓말).
 
-**주요 명령어** — 대표만 추렸습니다. 전체 41개와 자세한 설명은 [COMMANDS.md](COMMANDS.md) 또는 [소개 페이지](index.html) 참고.
+**주요 명령어** — 대표만 추렸습니다. 전체 41개와 자세한 설명은 [COMMANDS.md](COMMANDS.md) 또는 [소개 페이지](<https://jtech-co.github.io/Grokmate/>) 참고.
 
 _누구나_
 
@@ -93,7 +93,7 @@ _봇 운영자_
 ## 5. 정보 (Info)
 
 - **License**: 독점 · All Rights Reserved ([LICENSE](LICENSE)). 문서·랜딩은 소개 목적이며 무단 복제·재사용을 허용하지 않습니다.
-- **약관·개인정보**: [이용약관](legal/terms.html) · [개인정보 처리방침](legal/privacy.html) (요약 [PRIVACY.md](PRIVACY.md))
+- **약관·개인정보**: [이용약관](<https://jtech-co.github.io/Grokmate/legal/terms.html>) · [개인정보 처리방침](<https://jtech-co.github.io/Grokmate/legal/privacy.html>) (요약 [PRIVACY.md](PRIVACY.md))
 - **보안 제보**: [SECURITY.md](SECURITY.md)
 - **더 보기**: [설계·보안 모델](ARCHITECTURE.md) · [디자인백서](docs/디자인백서.md) · [ADR](docs/adr/)
 - **Contact**: [jtech-bryan@proton.me](mailto:jtech-bryan@proton.me)
