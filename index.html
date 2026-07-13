@@ -235,6 +235,67 @@
         margin-top: 24px;
       }
 
+      /* ── 명령어 목록 (명령이 늘어도 한 줄씩만 추가되는 구조) ── */
+      .cmdgroup {
+        margin-top: 26px;
+      }
+      .cmdgroup:first-of-type {
+        margin-top: 18px;
+      }
+      .cmdgroup h3 {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin: 0 0 8px;
+        text-transform: none;
+        letter-spacing: 0;
+        font-size: 0.98rem;
+      }
+      .access {
+        font-family: var(--font-mono);
+        font-size: 0.68rem;
+        color: var(--muted);
+        border: 1px solid var(--border);
+        padding: 2px 8px;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+      .cmd {
+        display: flex;
+        gap: 16px;
+        padding: 9px 0;
+        border-top: 1px solid #1a1a1a;
+        align-items: baseline;
+      }
+      .cmdgroup .cmd:first-of-type {
+        border-top: none;
+      }
+      .cmd-name {
+        font-family: var(--font-mono);
+        font-size: 0.82rem;
+        color: var(--text-primary);
+        flex: 0 0 180px;
+        white-space: nowrap;
+      }
+      .cmd-desc {
+        color: var(--text);
+        font-size: 0.92rem;
+        flex: 1;
+        line-height: 1.5;
+      }
+      @media (max-width: 620px) {
+        .cmd {
+          flex-direction: column;
+          gap: 2px;
+          padding: 10px 0;
+        }
+        .cmd-name {
+          flex-basis: auto;
+        }
+      }
+
       /* ── 버튼 (badge 언어 확장) ── */
       .cta {
         display: flex;
@@ -454,7 +515,7 @@
         >
         <a class="btn btn-ghost" href="#content">기능 보기</a>
       </div>
-      <span class="small">Grok 4.3 · 564 Tests · 비공식 프로젝트</span>
+      <span class="small">Grok 4.3 · 569 Tests · 비공식 프로젝트</span>
     </header>
 
     <main id="content">
@@ -472,122 +533,111 @@
           </p>
         </section>
 
-        <!-- 대화·AI -->
+        <!-- 호출·동작 -->
         <section class="card">
-          <h2>대화 · AI</h2>
-          <p>그록아, @멘션, DM으로 부르면 발화 단위로 모드를 판단해 답합니다. 기본은 반말 친근체.</p>
+          <h2>호출 · 동작</h2>
+          <p>부르는 방법과, 부른 뒤 봇이 발화 단위로 어떻게 판단하는지.</p>
           <ul>
             <li>
-              <strong>호출 — 웨이크워드·멘션·DM·전용 채널</strong> — 메시지 맨 앞에 '그록아' 또는 'Hey Grok', 봇 멘션, DM,
-              또는 관리자가 지정한 전용 AI 채널(멘션 불필요) 중 하나면 응답하고 그 외 메시지는 무시합니다.
-              <code>그록아 / Hey Grok / config ai-channel</code>
+              <strong>호출</strong> — 메시지 맨 앞 <code>그록아</code>·<code>Hey Grok</code>, 봇 멘션, DM, 또는 관리자가 지정한
+              <strong>전용 AI 채널</strong>(멘션 없이 대화)에 응답하고 그 외 메시지는 무시합니다.
             </li>
             <li>
-              <strong>한국어·영어 전환</strong> — 웨이크워드가 응답 언어를 정합니다. '그록아'는 한국어, 'Hey Grok'은
-              영어, 멘션·DM은 한국어가 기본. <code>ko / en</code>
+              <strong>응답 언어</strong> — <code>그록아</code>는 한국어, <code>Hey Grok</code>은 영어, 멘션·DM은 한국어가 기본.
+              서버 설정으로 존댓말 전환.
             </li>
             <li>
-              <strong>발화 단위 모드 판정</strong> — 메시지마다 일반 / 검색 / 코딩을 규칙과 LLM 분류로 판단해 페르소나와
-              처리 경로를 바꿉니다. <code>GENERAL · RESEARCH · CODING</code>
+              <strong>발화 단위 모드</strong> — 메시지마다 일반·검색·코딩·서버관리·성인을 규칙과 LLM으로 판정해 페르소나와 처리
+              경로를 바꿉니다. 실시간 사실은 검색 모드에서 웹·X 근거와 출처를 답니다.
             </li>
             <li>
-              <strong>유저별 단기 대화 기억</strong> — 채널×사용자 단위로 최근 메시지를 유지해 멀티턴 맥락을 잇습니다. 같은
-              채널이라도 유저 A의 SFW 코딩과 유저 B의 NSFW 대화·모드가 서로 섞이지 않습니다.
-              <code>채널×유저당 20개 · 인메모리</code>
+              <strong>유저별 대화 기억</strong> — 채널×사용자 단위 단기 인메모리라, 같은 채널이라도 유저 간·모드 간 맥락이 섞이지
+              않습니다. 재시작하면 초기화.
             </li>
             <li>
-              <strong>서버 맥락 인식</strong> — 서버 이름·인원수·채널·역할·소유자 실값을 받아 추측 없이 답합니다. 요청자가
-              볼 수 있는 채널만 노출. <code>채널 60 · 역할 40</code>
-            </li>
-            <li>
-              <strong>작성 중 표시</strong> — 답을 만드는 동안 'Grokmate가 답변을 작성 중입니다' 애니메이션을 띄우고,
-              완성되면 같은 메시지를 답변으로 교체합니다.
+              <strong>자연어 서버 관리</strong> — "슬로우모드 10초로", "역할 부여"처럼 자연어로 지시해도 <em>권한이 있는 사람</em>에
+              한해 실행됩니다. 밴·킥·타임아웃·청소 같은 고위험은 슬래시 + 확인 버튼 전용.
             </li>
           </ul>
         </section>
 
-        <!-- 검색·연구·코딩 -->
+        <!-- 명령어 · 누구나 -->
         <section class="card">
-          <h2>검색 · 연구 · 코딩</h2>
-          <p>실시간 사실은 검색으로 근거를 대고, 코드는 길면 파일로 떨어뜨립니다.</p>
-          <ul>
-            <li>
-              <strong>실시간 웹·X 검색</strong> — 검색 모드에서 xAI 서버사이드 도구로 웹과 X를 검색해 답하고, 인용 출처를
-              본문과 분리해 각주로 보여줍니다. <code>출처 기본 3 · 최대 10</code>
-            </li>
-            <li>
-              <strong>긴 코드 파일 첨부</strong> — 10줄 넘는 코드 블록은 언어에 맞는 확장자의 다운로드 파일로 빼고, 짧은
-              코드는 인라인으로 둡니다. <code>임계 10줄</code>
-            </li>
-            <li>
-              <strong>/repo — 레포 검색</strong> — 공개 GitHub 레포지토리를 검색해 별점순 상위 결과를 보여줍니다. 누구나
-              사용 가능. <code>/repo query · 최대 8</code>
-            </li>
-            <li>
-              <strong>/gh-user — 사용자 조회</strong> — GitHub 사용자 프로필과 최근 업데이트된 레포 목록을 보여줍니다.
-              <code>/gh-user name · 레포 10</code>
-            </li>
-            <li>
-              <strong>/gh-file — 파일·디렉터리</strong> — 레포 파일을 인라인(길면 첨부)으로 보거나 디렉터리 개요를
-              훑습니다. <code>/gh-file repo [path] · 400KB</code>
-            </li>
-          </ul>
+          <h2>명령어 · 누구나</h2>
+          <p>권한 없이 누구나 쓰는 대화·유틸·커뮤니티 명령입니다.</p>
+
+          <div class="cmdgroup">
+            <h3>AI · 유틸 <span class="access">누구나</span></h3>
+            <div class="cmd"><span class="cmd-name">/help</span><span class="cmd-desc">명령어·기능 안내(본인만 표시)</span></div>
+            <div class="cmd"><span class="cmd-name">/usage</span><span class="cmd-desc">내 토큰 사용량·요금제 확인 및 업그레이드</span></div>
+            <div class="cmd"><span class="cmd-name">/reset</span><span class="cmd-desc">나와 나눈 대화 맥락(기억) 초기화</span></div>
+            <div class="cmd"><span class="cmd-name">/fetch</span><span class="cmd-desc">웹 페이지(URL)를 읽어 출처와 함께 요약</span></div>
+            <div class="cmd"><span class="cmd-name">/translate</span><span class="cmd-desc">이미지 속 글자를 OCR 추출해 번역(이미지는 모델에 직접 전송 안 함)</span></div>
+            <div class="cmd"><span class="cmd-name">/repo</span><span class="cmd-desc">GitHub 공개 레포지토리 검색(별점순)</span></div>
+            <div class="cmd"><span class="cmd-name">/gh-user</span><span class="cmd-desc">GitHub 사용자 프로필·레포 목록</span></div>
+            <div class="cmd"><span class="cmd-name">/gh-file</span><span class="cmd-desc">레포 파일 내용·디렉터리 개요</span></div>
+            <div class="cmd"><span class="cmd-name">/verify-age</span><span class="cmd-desc">만 19세 이상 자가 인증(성인 채널 이용용)</span></div>
+            <div class="cmd"><span class="cmd-name">/ping</span><span class="cmd-desc">봇 응답·지연 확인</span></div>
+            <div class="cmd"><span class="cmd-name">/debug</span><span class="cmd-desc">진단 — 시각(KST)·핑·RAM·디스크·CPU·네트워크 속도·채널 수(1분 쿨타임)</span></div>
+          </div>
+
+          <div class="cmdgroup">
+            <h3>커뮤니티 · 재미 <span class="access">누구나</span></h3>
+            <div class="cmd"><span class="cmd-name">/level</span><span class="cmd-desc">내 레벨·경험치 확인(대상 지정 가능)</span></div>
+            <div class="cmd"><span class="cmd-name">/leaderboard</span><span class="cmd-desc">서버 레벨 순위</span></div>
+            <div class="cmd"><span class="cmd-name">/poll</span><span class="cmd-desc">투표·설문 만들기(버튼 집계, 다중·비밀·자동마감)</span></div>
+            <div class="cmd"><span class="cmd-name">/voice</span><span class="cmd-desc">내 임시 음성방 제어 — 이름·인원·잠금(방장)</span></div>
+          </div>
         </section>
 
-        <!-- 외부 연동 -->
+        <!-- 명령어 · 서버 관리 -->
         <section class="card">
-          <h2>외부 연동</h2>
-          <p>링크를 안전하게 읽어 요약합니다. 명령어로도, 자연어로도.</p>
-          <ul>
-            <li>
-              <strong>/fetch — 페이지 읽고 요약</strong> — 공개 웹 페이지를 안전하게 가져와 Grok 요약을 출처 링크와 함께
-              돌려줍니다. 읽기 전용이라 누구나. <code>/fetch url [ask]</code>
-            </li>
-            <li>
-              <strong>자연어 링크 읽기</strong> — 링크에 '읽어 / 요약' 신호를 주거나 링크가 사실상 메시지 전부일 때, 별도
-              명령 없이 페이지를 읽어 요약합니다. <code>첫 URL만 처리</code>
-            </li>
-            <li>
-              <strong>이미지·파일 분석 (SFW)</strong> — 이미지는 비전으로, 텍스트·코드 파일은 인라인으로 분석합니다. 항상
-              일반(SFW) 경로로만 동작. <code>이미지 10MB · 텍스트 256KB</code>
-            </li>
-          </ul>
+          <h2>명령어 · 서버 관리</h2>
+          <p>권한이 있는 사람에게만 목록에 뜨고 실행됩니다. 밴·킥·타임아웃·청소는 슬래시 + 확인 버튼 전용.</p>
+
+          <div class="cmdgroup">
+            <h3>모더레이션 <span class="access">스태프+</span></h3>
+            <div class="cmd"><span class="cmd-name">/warn</span><span class="cmd-desc">경고 부여(누적 시 자동 타임아웃)</span></div>
+            <div class="cmd"><span class="cmd-name">/warnings</span><span class="cmd-desc">유저의 활성 경고 목록</span></div>
+            <div class="cmd"><span class="cmd-name">/pardon</span><span class="cmd-desc">경고 사면 — 특정 번호·최근 N건·전체</span></div>
+            <div class="cmd"><span class="cmd-name">/timeout · /untimeout</span><span class="cmd-desc">유저 타임아웃 부여·조기 해제</span></div>
+            <div class="cmd"><span class="cmd-name">/kick</span><span class="cmd-desc">유저 추방</span></div>
+            <div class="cmd"><span class="cmd-name">/ban · /unban</span><span class="cmd-desc">유저 차단·해제(해제는 Discord ID로 지정)</span></div>
+            <div class="cmd"><span class="cmd-name">/purge</span><span class="cmd-desc">이 채널 최근 메시지 일괄 삭제(1~100)</span></div>
+            <div class="cmd"><span class="cmd-name">/slowmode</span><span class="cmd-desc">이 채널 슬로우모드(0~21600초)</span></div>
+            <div class="cmd"><span class="cmd-name">/lock · /unlock</span><span class="cmd-desc">이 채널 잠금·해제</span></div>
+          </div>
+
+          <div class="cmdgroup">
+            <h3>서버 설정 <span class="access">관리자</span></h3>
+            <div class="cmd"><span class="cmd-name">/config</span><span class="cmd-desc">서버 설정 — 전용 AI 채널·존댓말·자연어 관리·자동 모더·모더 로그 채널·스태프/관리 역할·전체 초기화</span></div>
+            <div class="cmd"><span class="cmd-name">/nsfw-policy</span><span class="cmd-desc">서버 성인 모드 기능 켜기/끄기(연령 제한 채널 한정)</span></div>
+            <div class="cmd"><span class="cmd-name">/create-channel · /delete-channel</span><span class="cmd-desc">채널 생성·삭제(삭제는 확인 버튼)</span></div>
+            <div class="cmd"><span class="cmd-name">/welcome</span><span class="cmd-desc">가입·퇴장 환영·작별 메시지</span></div>
+            <div class="cmd"><span class="cmd-name">/autorole</span><span class="cmd-desc">가입 시 자동 지급 역할</span></div>
+            <div class="cmd"><span class="cmd-name">/reactionrole</span><span class="cmd-desc">이모지 반응 → 역할 자동 부여</span></div>
+            <div class="cmd"><span class="cmd-name">/voice-hub</span><span class="cmd-desc">임시 음성채널 허브(입장 시 개인 방 자동 생성)</span></div>
+          </div>
+
+          <p class="note">
+            봇이 서버에 합류하면 기본 설정을 만들고 호출 방법을 안내하는 환영 메시지를 보냅니다. 자동 모더레이션은
+            <code>/config automod</code>로 켜는 옵트인이고, <code>/config log-channel</code> 지정 시 삭제·경고·사면이 로그
+            채널에도 기록됩니다.
+          </p>
         </section>
 
-        <!-- 서버 관리·모더레이션 -->
+        <!-- 명령어 · 봇 운영자 -->
         <section class="card">
-          <h2>서버 관리 · 모더레이션</h2>
-          <p>관리 액션은 요청한 사람의 권한으로만 실행됩니다. 위험한 작업은 슬래시 전용·확인 버튼.</p>
-          <ul>
-            <li>
-              <strong>자연어 서버 관리 (권한 필요)</strong> — 슬로우모드 설정, 채널 생성, 역할 부여·해제는 권한이 되는
-              사람이 자연어로 지시하면 실행됩니다. <code>슬로우모드 0–21600초</code>
-            </li>
-            <li>
-              <strong>고위험은 슬래시 전용 + 확인</strong> — 밴·킥·타임아웃·청소는 채팅으로 실행하지 않고 슬래시 명령으로
-              유도하며, 확인 버튼 뒤에서 실행합니다. <code>/ban /kick /timeout /purge</code>
-            </li>
-            <li>
-              <strong>자동 모더레이션 (옵트인)</strong> — 관리자가 켜면 스팸·욕설·외부 링크 규칙에 걸린 메시지를 삭제·경고
-              후 기록합니다. <code>기본 비활성 · 허용 목록 외 링크 차단</code>
-            </li>
-            <li>
-              <strong>서버 설정 · 경고</strong> — 전용 AI 채널·존댓말·자동 모더·역할·모더 로그 채널을 한 명령으로 관리하고,
-              경고는 누적 시 자동 타임아웃합니다. <code>/config · /warn · /pardon</code>
-            </li>
-            <li>
-              <strong>XP 레벨링 + 리더보드</strong> — 채팅으로 XP를 쌓아 레벨업하면 안내가 뜨고, 슬래시로 레벨·순위를
-              확인합니다. <code>/level · /leaderboard</code>
-            </li>
-            <li>
-              <strong>24/7 운영 · 점검 모드</strong> — 점검·업데이트 시 켜두면 모든 요청에 '점검 중' 안내가 나가고, 단일
-              인스턴스 잠금·우아한 종료로 무중단성을 지킵니다. <code>/maintenance · /health</code>
-            </li>
-            <li>
-              <strong>서버 합류 온보딩</strong> — 봇이 서버에 들어오면 기본 설정을 만들고 호출 방법을 설명하는 한국어 환영
-              메시지를 보냅니다.
-            </li>
-          </ul>
+          <h2>명령어 · 봇 운영자</h2>
+          <p>봇을 직접 운영하는 사람(설정된 운영자)만. 서버 관리자 권한만으로는 실행되지 않습니다.</p>
+          <div class="cmdgroup">
+            <h3>운영 · 관측 <span class="access">봇 운영자</span></h3>
+            <div class="cmd"><span class="cmd-name">/maintenance</span><span class="cmd-desc">점검 모드 켜기/끄기 — 켜면 전원에게 '점검 중입니다' 안내(재시작해도 유지)</span></div>
+            <div class="cmd"><span class="cmd-name">/health</span><span class="cmd-desc">봇 상태 — 동시성·OCR 대기·업타임·메모리·점검 모드</span></div>
+            <div class="cmd"><span class="cmd-name">/cost</span><span class="cmd-desc">토큰 사용량 집계(오늘·최근 7일)</span></div>
+            <div class="cmd"><span class="cmd-name">/audit</span><span class="cmd-desc">최근 권한(관리 액션) 감사 로그</span></div>
+            <div class="cmd"><span class="cmd-name">/grant-tier · /grant-list</span><span class="cmd-desc">유료 티어 수동 부여·활성 구독 조회</span></div>
+          </div>
         </section>
 
         <!-- 안전·신뢰 -->
@@ -664,7 +714,7 @@
             <span class="chip">SQLite + Drizzle</span>
             <span class="chip">JSDoc + tsc</span>
             <span class="chip">eslint 경계 강제</span>
-            <span class="chip">Vitest · 564 Tests</span>
+            <span class="chip">Vitest · 569 Tests</span>
             <span class="chip">NSFW 안전 eval</span>
             <span class="chip">GitHub Actions CI</span>
             <span class="chip">INV-1~7</span>

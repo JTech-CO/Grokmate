@@ -14,7 +14,7 @@ Grokmate는 xAI Grok 4.3 위에서 동작하는 디스코드 봇으로, **범용
 - **검색·코딩** — 웹 / X 실시간 검색 + 출처 표기, 코드 작성·디버깅(긴 코드는 파일 첨부).
 - **멀티모달·연동** — 이미지·파일 분석(SFW)·이미지 번역(`/translate`), URL 요약(`/fetch`), GitHub 조회(`/repo`·`/gh-user`·`/gh-file`).
 - **서버 관리·모더레이션** — 자연어·슬래시 관리(슬로우모드·역할·채널·밴/차단 해제·타임아웃/해제·잠금), 자동 모더레이션, 경고·사면(누적 시 자동 타임아웃), 모더레이션 로그 채널, `/config` 서버 설정(전용 AI 채널·존댓말·자동 모더·스탭/관리 역할·자연어 관리·전체 초기화).
-- **커뮤니티 유틸** — 레벨/리더보드, 환영·작별, 자동 역할, 반응 역할, 임시 음성채널, 투표(`/poll`, 시간 자동 마감).
+- **커뮤니티 유틸** — 레벨/리더보드, 환영·작별, 자동 역할, 반응 역할, 임시 음성채널, 투표(`/poll`, 시간 자동 마감), 진단(`/debug` — 시각·핑·RAM·디스크·CPU·네트워크 속도·채널 수, 동일인 1분 쿨타임).
 - **게이팅된 성인 모드** — 연령제한 채널 + 서버 활성 + 연령 인증 + 성적 의도의 **4중 게이트**를 모두 통과해야만.
 - **24/7 운영** — 점검 모드(`/maintenance`, 점검 중 '점검 중입니다' 안내)·단일 인스턴스 잠금·우아한 종료·업스트림 타임아웃 방어, 운영자 관측(`/cost`·`/health`·`/audit`).
 
@@ -27,7 +27,7 @@ Grokmate는 xAI Grok 4.3 위에서 동작하는 디스코드 봇으로, **범용
 - **AI**: xAI Grok 4.3 (`@ai-sdk/xai` · `ai`)
 - **데이터**: SQLite + Drizzle ORM
 - **기타**: tesseract.js (OCR) · undici (안전한 URL fetch)
-- **품질**: Vitest (564 tests) · ESLint (+ `eslint-plugin-boundaries` 경계 강제) · Prettier · GitHub Actions CI(불변식 회귀 게이트 포함)
+- **품질**: Vitest (569 tests) · ESLint (+ `eslint-plugin-boundaries` 경계 강제) · Prettier · GitHub Actions CI(불변식 회귀 게이트 포함)
 
 ## 3. 봇 추가·사용 (Quick Start)
 

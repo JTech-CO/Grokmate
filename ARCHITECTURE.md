@@ -69,7 +69,7 @@ config  →  grok · github · web · ocr · billing · db · auth  →  discord
 
 - JavaScript + JSDoc, `tsc --checkJs --strict` 타입 그린.
 - 모듈 경계 lint 강제(우회 직접 실행 차단).
-- Vitest 564개 + 결정적·무비용 불변식 게이트(인가 parity·NSFW 안전): 하드차단 차단율 100%·4중 게이트 누출 0·슬래시↔자연어 인가 parity 100%.
+- Vitest 569개 + 결정적·무비용 불변식 게이트(인가 parity·NSFW 안전): 하드차단 차단율 100%·4중 게이트 누출 0·슬래시↔자연어 인가 parity 100%.
 - 게이트: lint + 타입체크 + 테스트 + 불변식 게이트를 통과해야 머지. **GitHub Actions CI**가 매 푸시·PR에서 자동 검증.
 
 ## 기술 스택
