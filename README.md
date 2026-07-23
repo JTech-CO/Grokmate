@@ -39,7 +39,7 @@ _봇 운영자_
 - **AI**: xAI Grok 4.3 (`@ai-sdk/xai` · `ai`)
 - **데이터**: SQLite + Drizzle ORM
 - **기타**: tesseract.js (OCR) · undici (안전한 URL fetch)
-- **품질**: Vitest (569 tests) · ESLint (+ `eslint-plugin-boundaries` 경계 강제) · Prettier · GitHub Actions CI(불변식 회귀 게이트 포함)
+- **품질**: Vitest (584 tests) · ESLint (+ `eslint-plugin-boundaries` 경계 강제) · Prettier · GitHub Actions CI(불변식 회귀 게이트 포함)
 
 ## 3. 봇 추가·사용 (Quick Start)
 
