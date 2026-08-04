@@ -1,6 +1,6 @@
 # 보안 정책 (Security Policy)
 
-Grokmate는 보안·안전을 핵심 가치로 설계됐습니다(권한 상승 0, 미성년·NSFW 누출 0 등 — [ARCHITECTURE.md](ARCHITECTURE.md#보안-모델) 참고). 취약점 제보를 환영합니다.
+Grokmate는 보안·안전을 핵심 가치로 설계됐습니다(권한 상승 0, 미성년·NSFW 누출 0 등: [ARCHITECTURE.md](ARCHITECTURE.md#보안-모델) 참고). 취약점 제보를 환영합니다.
 
 ## 취약점 제보
 
@@ -8,7 +8,7 @@ Grokmate는 보안·안전을 핵심 가치로 설계됐습니다(권한 상승 
 
 - **연락처: [jtech-bryan@proton.me](mailto:jtech-bryan@proton.me)**
 
-가능하면 다음을 포함해 주세요 — 영향 범위, 재현 절차, 예상 심각도.
+가능하면 다음을 포함해 주세요: 영향 범위, 재현 절차, 예상 심각도.
 
 ## 처리
 

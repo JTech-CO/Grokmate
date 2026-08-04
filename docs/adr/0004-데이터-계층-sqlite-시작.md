@@ -1,4 +1,4 @@
-# ADR 0004 — 데이터 계층: SQLite 시작 + 스토어 추상화
+# ADR 0004: 데이터 계층: SQLite 시작 + 스토어 추상화
 
 - **상태**: 채택 (Accepted)
 - **날짜**: 2026-06-13
@@ -11,7 +11,7 @@ M2(영속화)를 시작한다. 운영 타깃은 PostgreSQL + Redis다(ADR 0001, 
 
 ## 결정
 
-1. **영속은 SQLite로 시작**(`better-sqlite3`). ORM은 **Drizzle** — SQLite와 PostgreSQL을 같은 코드 스타일로 지원해 추후 전환 비용을 낮춘다.
+1. **영속은 SQLite로 시작**(`better-sqlite3`). ORM은 **Drizzle**: SQLite와 PostgreSQL을 같은 코드 스타일로 지원해 추후 전환 비용을 낮춘다.
 2. **데이터 접근은 리포지토리 뒤에 숨긴다.** 상위 모듈(core/auth/nsfw 등)은 테이블이 아니라 `db`가 노출하는 리포지토리 함수만 호출한다. 스키마·마이그레이션은 Drizzle(`drizzle-kit`)로 관리.
 3. **컨텍스트 스토어는 인터페이스로 추상화.** 초기 구현은 프로세스 인메모리(맵 기반), 후속에 Redis 백엔드로 스왑. M1의 인메모리 대화 윈도우를 이 인터페이스로 흡수한다.
 4. **경계 유지**: `db`는 `config`만 의존한다(CLAUDE.md §2.1). DB 드라이버·Drizzle 인스턴스 생성은 `db` 안에서만. 시크릿/경로는 `config` 경유.
