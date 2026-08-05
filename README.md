@@ -84,6 +84,7 @@ _봇 운영자_
 ├── index.html        # 소개 랜딩 페이지 (GitHub Pages)
 ├── README.md         # 이 문서
 ├── COMMANDS.md       # 전체 명령어
+├── CHANGELOG.md      # 변경 이력 (날짜순)
 ├── ARCHITECTURE.md   # 설계·보안 모델
 ├── PRIVACY.md        # 개인정보 요약
 ├── SECURITY.md       # 취약점 제보
@@ -100,6 +101,7 @@ _봇 운영자_
 - **License**: 독점 · All Rights Reserved ([LICENSE](LICENSE)). 문서·랜딩은 소개 목적이며 무단 복제·재사용을 허용하지 않습니다.
 - **약관·개인정보**: [이용약관](<https://jtech-co.github.io/Grokmate/legal/terms.html>) · [개인정보 처리방침](<https://jtech-co.github.io/Grokmate/legal/privacy.html>) (요약 [PRIVACY.md](PRIVACY.md))
 - **보안 제보**: [SECURITY.md](SECURITY.md)
+- **변경 이력**: [CHANGELOG.md](CHANGELOG.md) (무엇이 언제 바뀌었는지 날짜순)
 - **더 보기**: [설계·보안 모델](ARCHITECTURE.md) · [디자인백서](docs/디자인백서.md) · [ADR](docs/adr/)
 - **Contact**: [jtech-bryan@proton.me](mailto:jtech-bryan@proton.me)
 

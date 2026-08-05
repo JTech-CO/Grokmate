@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>변경 이력 | Grokmate</title>
+    <meta name="description" content="Grokmate 디스코드 봇에 언제 무엇이 추가·변경·수정됐는지 날짜순으로 정리한 변경 이력입니다." />
+    <meta name="theme-color" content="#000000" />
+    <meta name="robots" content="index, follow" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400;700&display=swap"
+    />
+    <style>
+      :root {
+        --bg: #000000;
+        --text-primary: #e0e0e0;
+        --text: #cccccc;
+        --muted: #888888;
+        --panel: #0a0a0a;
+        --border: #333333;
+        --link: #ffffff;
+        --accent: #ffffff;
+        --note-bg: #111111;
+        --font-sans: "Inter", -apple-system, BlinkMacSystemFont, system-ui, "Apple SD Gothic Neo", "Noto Sans KR",
+          "Malgun Gothic", sans-serif;
+        --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: var(--font-sans);
+        line-height: 1.7;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      :focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 3px;
+      }
+      a {
+        color: var(--link);
+        text-decoration: none;
+        border-bottom: 1px solid var(--border);
+        transition: border-color 0.2s ease;
+      }
+      a:hover {
+        border-color: var(--accent);
+      }
+
+      header {
+        max-width: 820px;
+        margin: 0 auto;
+        padding: 72px 24px 32px;
+        border-bottom: 1px solid var(--border);
+      }
+      .topnav {
+        font-family: var(--font-mono);
+        font-size: 0.78rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-bottom: 28px;
+      }
+      .topnav a {
+        border: none;
+        color: var(--muted);
+      }
+      .topnav a:hover {
+        color: var(--accent);
+      }
+      .badge {
+        display: inline-block;
+        padding: 6px 12px;
+        border: 1px solid var(--border);
+        color: var(--accent);
+        font-family: var(--font-mono);
+        font-weight: 700;
+        font-size: 0.82rem;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+      }
+      h1 {
+        color: var(--accent);
+        font-size: clamp(1.8rem, 5vw, 2.6rem);
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        margin: 0 0 12px;
+      }
+      .meta {
+        font-family: var(--font-mono);
+        font-size: 0.82rem;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+      }
+
+      main {
+        max-width: 820px;
+        margin: 0 auto;
+        padding: 40px 24px 64px;
+      }
+      .lede {
+        color: var(--text-primary);
+        font-size: 1.05rem;
+      }
+      p {
+        margin: 12px 0;
+      }
+      strong {
+        color: var(--text-primary);
+        font-weight: 600;
+      }
+      code {
+        font-family: var(--font-mono);
+        font-size: 0.82em;
+        color: var(--text-primary);
+        background: var(--note-bg);
+        border: 1px solid var(--border);
+        padding: 1px 6px;
+      }
+      .note {
+        background: var(--note-bg);
+        border-left: 2px solid var(--accent);
+        padding: 16px 18px;
+        margin: 18px 0;
+        color: var(--text-primary);
+        font-size: 0.96rem;
+      }
+
+      .toc {
+        background: var(--panel);
+        border: 1px solid var(--border);
+        padding: 20px 24px;
+        margin: 28px 0 44px;
+      }
+      .toc h2 {
+        font-size: 0.8rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin: 0 0 12px;
+        border: none;
+        padding: 0;
+      }
+      .toc ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        columns: 2;
+        column-gap: 32px;
+      }
+      .toc li {
+        margin-bottom: 8px;
+        font-size: 0.92rem;
+        font-family: var(--font-mono);
+      }
+      .toc a {
+        border: none;
+        color: var(--text);
+      }
+      .toc a:hover {
+        color: var(--accent);
+      }
+
+      /* 릴리스 = 날짜 하나. 항목마다 분류 태그를 왼쪽 고정 열에 두어 세로로 훑히게 한다. */
+      section {
+        margin-bottom: 44px;
+        scroll-margin-top: 24px;
+      }
+      h2 {
+        color: var(--accent);
+        font-family: var(--font-mono);
+        font-size: 1.05rem;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        margin: 0 0 16px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--border);
+      }
+      .entries {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      .entries > li {
+        display: grid;
+        grid-template-columns: 52px 1fr;
+        column-gap: 16px;
+        margin-bottom: 16px;
+      }
+      .tag {
+        font-family: var(--font-mono);
+        font-size: 0.7rem;
+        letter-spacing: 0.04em;
+        color: var(--muted);
+        border: 1px solid var(--border);
+        text-align: center;
+        padding: 1px 0;
+        height: fit-content;
+        margin-top: 5px;
+      }
+      .tag.sec {
+        color: var(--text-primary);
+        border-color: var(--muted);
+      }
+      .entry > :first-child {
+        margin-top: 0;
+      }
+      .entry > :last-child {
+        margin-bottom: 0;
+      }
+      .sub {
+        margin: 8px 0 0;
+        padding-left: 20px;
+        color: var(--muted);
+        font-size: 0.94rem;
+      }
+      .sub li {
+        margin-bottom: 6px;
+      }
+
+      footer {
+        max-width: 820px;
+        margin: 0 auto;
+        padding: 32px 24px 56px;
+        border-top: 1px solid var(--border);
+        color: #9a9a9a;
+        font-family: var(--font-mono);
+        font-size: 0.76rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+      footer .fine {
+        display: block;
+        text-transform: none;
+        letter-spacing: 0;
+        font-size: 0.78rem;
+        color: #828282;
+        line-height: 1.7;
+        margin-top: 14px;
+      }
+      footer a {
+        color: #9a9a9a;
+        border: none;
+      }
+      footer a:hover {
+        color: var(--accent);
+      }
+
+      @media (max-width: 680px) {
+        .toc ul {
+          columns: 1;
+        }
+        .entries > li {
+          grid-template-columns: 1fr;
+          row-gap: 4px;
+        }
+        .tag {
+          justify-self: start;
+          padding: 1px 10px;
+          margin-top: 0;
+        }
+        header {
+          padding: 48px 20px 28px;
+        }
+        main {
+          padding: 32px 20px 56px;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+        * {
+          transition: none !important;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <nav class="topnav"><a href="index.html">← Grokmate</a></nav>
+      <div class="badge">Changelog</div>
+      <h1>변경 이력</h1>
+      <p class="meta">최종 갱신: 2026-08-06</p>
+    </header>
+
+    <main>
+      <p class="lede">
+        Grokmate에 실제로 반영된 변경을 이용자 관점에서 정리합니다. 무엇이 언제 바뀌었는지 밖에서도 확인할 수 있도록
+        공개합니다.
+      </p>
+
+      <p>
+        Grokmate는 <strong>호스팅형 봇</strong>이라 이용자가 버전을 골라 설치하지 않습니다. 그래서 판올림 번호 대신
+        <strong>반영된 날짜</strong>로 적습니다. 서버에 봇이 들어와 있다면 항상 최신 버전입니다.
+      </p>
+
+      <p class="note">
+        내부 리팩터링·테스트·문서 정리처럼 사용감이 달라지지 않는 변경은 생략했습니다. 분류는
+        <strong>추가</strong>(새 기능) · <strong>변경</strong>(동작·정책이 달라짐) · <strong>수정</strong>(버그 고침) ·
+        <strong>보안</strong>(권한·안전 관련) 넷입니다.
+      </p>
+
+      <nav class="toc" aria-label="날짜 목차">
+        <h2>날짜</h2>
+        <ul>
+          <li><a href="#d20260805">2026-08-05</a></li>
+          <li><a href="#d20260804">2026-08-04</a></li>
+          <li><a href="#d20260723">2026-07-23</a></li>
+          <li><a href="#d20260714">2026-07-14</a></li>
+          <li><a href="#d20260713">2026-07-13</a></li>
+          <li><a href="#d20260712">2026-07-12</a></li>
+          <li><a href="#d20260710">2026-07-10</a></li>
+          <li><a href="#d20260709">2026-07-09</a></li>
+          <li><a href="#d20260708">2026-07-08</a></li>
+          <li><a href="#d20260707">2026-07-07</a></li>
+          <li><a href="#d20260703">2026-07-03</a></li>
+          <li><a href="#d20260616">2026-06-16 ~ 06-20</a></li>
+          <li><a href="#d20260613">2026-06-13 ~ 06-17</a></li>
+        </ul>
+      </nav>
+
+      <section id="d20260805">
+        <h2>2026-08-05</h2>
+        <ul class="entries">
+          <li>
+            <span class="tag">추가</span>
+            <div class="entry">
+              <strong>커스텀 명령어·자동응답</strong>(<code>/custom</code>). 서버가 직접 만든 <code>!트리거</code> 명령과
+              키워드 자동응답에 고정 문구로 답합니다. AI를 거치지 않아 토큰을 쓰지 않습니다.
+              <ul class="sub">
+                <li>
+                  등록은 <strong>스탭 이상</strong>만. <code>/custom list</code> 는 목록에서 바로 삭제·수정하는
+                  패널이며, 관리자 이상은 서버 전체를, 스탭은 자기가 만든 것만 다룹니다.
+                </li>
+                <li>도배 방지: 계정당 하루 5개(요금제 무관, 지우면 회복), 서버당 50개, 트리거 200자·응답 1,000자.</li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <span class="tag">추가</span>
+            <div class="entry">
+              <code>/help</code> 를 <strong>일반 사용자 / 관리자 두 뷰</strong>로 나누고 버튼으로 전환하게 했습니다.
+              명령이 늘어 한 화면에 다 담기 어려워졌기 때문입니다.
+            </div>
+          </li>
+          <li>
+            <span class="tag">수정</span>
+            <div class="entry">
+              시스템 프롬프트에 남아 있던 옛 문장 때문에 봇이 "난 실시간 검색을 못 한다"고 잘못 답하던 문제. 실제로는
+              검색 모드로 자동 전환됩니다.
+            </div>
+          </li>
+          <li>
+            <span class="tag">변경</span>
+            <div class="entry">한국어 안내 문구에 섞여 있던 영문식 대시(—)를 쌍점 등으로 바꿨습니다.</div>
+          </li>
+        </ul>
+      </section>
+
+      <section id="d20260804">
+        <h2>2026-08-04</h2>
+        <ul class="entries">
+          <li>
+            <span class="tag">추가</span>
+            <div class="entry">
+              <strong>음성 낭독(TTS)</strong>. 음성 채널에서 문장을 읽어줍니다.
+              <ul class="sub">
+                <li><code>/tts</code> 로 문장 낭독, <code>/tts-stop</code> 으로 중지·퇴장.</li>
+                <li>관리자가 <code>/config tts-channel</code> 로 지정한 텍스트 채널의 채팅을 자동으로 읽습니다.</li>
+                <li>사용자가 음성 채널에 들어오면 봇도 따라 들어가고, 사람이 다 나가면 나갑니다.</li>
+                <li>
+                  <code>/tts-settings</code>: 목소리 16종 중 선택(유지됨), 재생 속도 0.8~1.5배(음성 채널을 나가면
+                  1.0으로 초기화).
+                </li>
+                <li>
+                  링크·멘션·코드블록은 읽지 않으며, <strong>AI 답변은 음성으로 내보내지 않습니다</strong>(음성 채널에는
+                  텍스트 채널 같은 연령 게이트가 없기 때문).
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <section id="d20260723">
+        <h2>2026-07-23</h2>
+        <ul class="entries">
+          <li>
+            <span class="tag">수정</span>
+            <div class="entry">
+              '밴드'·'청소년'·'킥보드'처럼 관리 동사가 <strong>다른 낱말의 일부</strong>일 때 밴·청소 명령으로 오인하던
+              문제. 이제 낱말 경계일 때만 관리로 인식합니다.
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <section id="d20260714">
+        <h2>2026-07-14</h2>
+        <ul class="entries">
+          <li>
+            <span class="tag">추가</span>
+            <div class="entry">
+              <code>/debug</code>: 현재 시각(KST)·핑·RAM·디스크·CPU 정보·네트워크 속도 실측·채널 수를 보여줍니다.
+              누구나 쓸 수 있고 동일인 1분 쿨타임.
+            </div>
+          </li>
+          <li>
+            <span class="tag">변경</span>
+            <div class="entry">
+              소개 페이지와 README를 명령어 나열식으로 재구성했습니다. 명령이 늘수록 줄글 구성이 읽기 어려워져서입니다.
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <section id="d20260713">
+        <h2>2026-07-13</h2>
+        <ul class="entries">
+          <li>
+            <span class="tag">변경</span>
+            <div class="entry">
+              4중 게이트를 <strong>모두 통과한 성인 채널</strong>에서는 명시적 표현이 없는 성인 창작 요청도 성인 모드로
+              처리합니다. 게이트가 하나라도 막힌 곳의 동작은 그대로입니다(누출 0).
+            </div>
+          </li>
+          <li>
+            <span class="tag">수정</span>
+            <div class="entry">
+              연령 인증과 서버 설정은 됐는데 <strong>채널 연령제한만 빠진</strong> 경우, 이유 없이 거절하던 것을 무엇이
+              필요한지 안내하도록 바꿨습니다.
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <section id="d20260712">
+        <h2>2026-07-12</h2>
+        <ul class="entries">
+          <li>
+            <span class="tag">추가</span>
+            <div class="entry">
+              <strong>점검 모드</strong>: 점검 중에는 봇이 켜진 채로 모든 요청에 안내를 돌려줍니다(재시작해도 유지).
+            </div>
+          </li>
+          <li>
+            <span class="tag">추가</span>
+            <div class="entry">
+              <code>/reset</code> 대화 맥락 초기화, <code>/config status</code>·<code>/config reset</code>.
+            </div>
+          </li>
+          <li>
+            <span class="tag">추가</span>
+            <div class="entry"><code>/untimeout</code>·<code>/unban</code> 해제 계열 관리 명령.</div>
+          </li>
+          <li>
+            <span class="tag">추가</span>
+            <div class="entry">운영자용 관측 명령 <code>/cost</code>·<code>/audit</code>·<code>/health</code>.</div>
+          </li>
+          <li>
+            <span class="tag">수정</span>
+            <div class="entry">
+              관리·경고 명령이 3초 만료로 실패하던 문제, 그리고 <strong>실제로는 성공했는데 실패로 보고</strong>하던
+              오보.
+            </div>
+          </li>
+          <li>
+            <span class="tag">수정</span>
+            <div class="entry">투표의 '자동 마감(분)' 옵션이 실제로는 마감되지 않던 문제.</div>
+          </li>
+          <li>
+            <span class="tag sec">보안</span>
+            <div class="entry">
+              반응 역할을 <strong>적용 시점에도</strong> 재검증합니다. 설정한 뒤 역할 권한이 바뀌어 권한 상승 통로가
+              생기는 것을 막습니다.
+            </div>
+          </li>
+          <li>
+            <span class="tag">변경</span>
+            <div class="entry">
+              24/7 운영 대비: 응답 없는 AI·OCR·다운로드 자동 회수, 종료 신호에 안전하게 마무리.
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <section id="d20260710">
+        <h2>2026-07-10</h2>
+        <ul class="entries">
+          <li>
+            <span class="tag sec">보안</span>
+            <div class="entry">
+              <strong>봇 경유 멘션 남용 차단</strong>. 봇에게 다른 유저나 <code>@everyone</code> 을 부르게 하는 요청은
+              스탭 이상만 가능하고, 봇 출력의 <code>@everyone</code>·<code>@here</code>·역할 핑은 항상 차단합니다.
+            </div>
+          </li>
+          <li>
+            <span class="tag">수정</span>
+            <div class="entry">중복 실행된 프로세스 때문에 한 질문에 두 번 답하던 문제(단일 인스턴스 잠금).</div>
+          </li>
+          <li>
+            <span class="tag">추가</span>
+            <div class="entry"><code>/pardon count</code>: 최근 N건만 사면해 경고 개수를 줄입니다.</div>
+          </li>
+          <li>
+            <span class="tag">추가</span>
+            <div class="entry">
+              <code>/config log-channel</code>: 자동 모더레이션·경고·사면을 지정 채널에 기록합니다.
+            </div>
+          </li>
+          <li>
+            <span class="tag">수정</span>
+            <div class="entry">반말 모드인데 "네", "알겠습니다" 같은 존댓말이 섞이던 문제.</div>
+          </li>
+          <li>
+            <span class="tag">수정</span>
+            <div class="entry">본문에 이미 있는 링크가 출처 각주에 중복으로 붙던 문제.</div>
+          </li>
+        </ul>
+      </section>
+
+      <section id="d20260709">
+        <h2>2026-07-09</h2>
+        <ul class="entries">
+          <li>
+            <span class="tag">변경</span>
+            <div class="entry">
+              <strong>요금제 기준을 대화 횟수에서 일일 토큰으로</strong> 바꾸고 중간 등급(Basic)을 넣었습니다. 짧은
+              대화와 긴 코드 요청의 실제 비용 차이를 횟수로는 반영할 수 없었기 때문입니다.
+            </div>
+          </li>
+          <li>
+            <span class="tag">변경</span>
+            <div class="entry">결제를 원화(KRW) 표기로 바꿨습니다. 봇은 카드·계좌 정보를 받지 않습니다.</div>
+          </li>
+          <li>
+            <span class="tag">변경</span>
+            <div class="entry">
+              24/7 안정성 작업: xAI 호출 동시성 제한, OCR 대기열 상한, 서버 설정 캐시, 메모리 상한.
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <section id="d20260708">
+        <h2>2026-07-08</h2>
+        <ul class="entries">
+          <li>
+            <span class="tag">추가</span>
+            <div class="entry">
+              <strong><a href="legal/terms.html">이용약관</a>·<a href="legal/privacy.html">개인정보 처리방침</a></strong>
+              공개.
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <section id="d20260707">
+        <h2>2026-07-07</h2>
+        <ul class="entries">
+          <li>
+            <span class="tag">추가</span>
+            <div class="entry">
+              환영·작별 메시지(<code>/welcome</code>), 자동 역할(<code>/autorole</code>), 반응
+              역할(<code>/reactionrole</code>).
+            </div>
+          </li>
+          <li>
+            <span class="tag">추가</span>
+            <div class="entry">
+              경고 시스템(<code>/warn</code>·<code>/warnings</code>·<code>/pardon</code>, 누적 시 자동 타임아웃).
+            </div>
+          </li>
+          <li>
+            <span class="tag">추가</span>
+            <div class="entry">투표·설문(<code>/poll</code>, 버튼 집계).</div>
+          </li>
+          <li>
+            <span class="tag">추가</span>
+            <div class="entry">
+              임시 음성채널(<code>/voice-hub</code> 허브 입장 시 개인 방 자동 생성) + 방장 제어 패널(<code>/voice</code>).
+            </div>
+          </li>
+          <li>
+            <span class="tag">추가</span>
+            <div class="entry">채널 잠금·해제(<code>/lock</code>·<code>/unlock</code>).</div>
+          </li>
+        </ul>
+      </section>
+
+      <section id="d20260703">
+        <h2>2026-07-03</h2>
+        <ul class="entries">
+          <li>
+            <span class="tag">추가</span>
+            <div class="entry">
+              이미지 번역(<code>/translate</code>). <strong>이미지를 외부로 보내지 않고</strong> 봇 안에서 글자만 뽑아
+              번역합니다.
+            </div>
+          </li>
+          <li>
+            <span class="tag">추가</span>
+            <div class="entry">채널 생성·삭제(<code>/create-channel</code>·<code>/delete-channel</code>).</div>
+          </li>
+          <li>
+            <span class="tag sec">보안</span>
+            <div class="entry">
+              보안 감사에서 나온 9건을 수정했습니다. 역할 부여 시 위계 검증, 미성년 하드차단 필터 보강, 여러 턴에 걸친
+              우회 시도 차단, 시스템 프롬프트 누출 재검증, 정규식 성능 공격(ReDoS) 차단.
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <section id="d20260616">
+        <h2>2026-06-16 ~ 06-20</h2>
+        <ul class="entries">
+          <li>
+            <span class="tag">추가</span>
+            <div class="entry">
+              URL 읽기(<code>/fetch</code>, 자연어 "이거 읽어줘"). 사설 IP·리다이렉트·크기·시간 상한 등 가드를 겁니다.
+            </div>
+          </li>
+          <li>
+            <span class="tag">추가</span>
+            <div class="entry">
+              GitHub 조회(<code>/repo</code>·<code>/gh-user</code>·<code>/gh-file</code>).
+            </div>
+          </li>
+          <li>
+            <span class="tag">추가</span>
+            <div class="entry">요금제·사용량 확인(<code>/usage</code>).</div>
+          </li>
+          <li>
+            <span class="tag">변경</span>
+            <div class="entry">
+              <strong>밴·킥·타임아웃·청소는 자연어로 실행되지 않습니다.</strong> 슬래시 명령 + 확인 버튼 전용으로 못
+              박았습니다. 오인식 한 번의 대가가 너무 크기 때문입니다.
+            </div>
+          </li>
+          <li>
+            <span class="tag">변경</span>
+            <div class="entry">출처는 기본 3개까지 답니다(개수를 지정하면 그 수치).</div>
+          </li>
+          <li>
+            <span class="tag sec">보안</span>
+            <div class="entry">
+              미성년 관련 하드차단의 우회 표현(영문·은어·학년·나이 약어·문자 변형)을 대폭 보강했습니다.
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <section id="d20260613">
+        <h2>2026-06-13 ~ 06-17</h2>
+        <p>첫 공개 기능 세트입니다.</p>
+        <ul class="entries">
+          <li>
+            <span class="tag">추가</span>
+            <div class="entry">
+              Grok 기반 대화(반말 친근체), 발화 단위 모드 판정(일반·검색·코딩·서버 관리·성인).
+            </div>
+          </li>
+          <li>
+            <span class="tag">추가</span>
+            <div class="entry">호출 축약어 <code>그록아</code>(한국어)·<code>Hey Grok</code>(영어), 멘션, DM.</div>
+          </li>
+          <li>
+            <span class="tag">추가</span>
+            <div class="entry">웹·X 실시간 검색 + 출처 표기.</div>
+          </li>
+          <li>
+            <span class="tag">추가</span>
+            <div class="entry">이미지·파일 분석(SFW).</div>
+          </li>
+          <li>
+            <span class="tag">추가</span>
+            <div class="entry">
+              자연어 서버 관리(권한자 한정), 자동 모더레이션, 레벨링·리더보드, 초대 시 온보딩.
+            </div>
+          </li>
+          <li>
+            <span class="tag">추가</span>
+            <div class="entry">
+              유저별 대화 기억 분리(채널×사용자). 같은 채널이라도 다른 사람의 맥락이 섞이지 않습니다.
+            </div>
+          </li>
+          <li>
+            <span class="tag sec">보안</span>
+            <div class="entry">
+              <strong>인가 단일 게이트</strong>: 모든 관리 액션은 봇이 아니라 요청한 사람의 권한으로 판정하며, 슬래시와
+              자연어가 같은 게이트를 지납니다.
+            </div>
+          </li>
+          <li>
+            <span class="tag sec">보안</span>
+            <div class="entry">
+              <strong>성인 모드 4중 게이트</strong>(연령제한 채널 + 서버 활성 + 연령 인증 + 성적 의도)와 미성년 콘텐츠
+              하드차단.
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <p>
+        문의·제보: <a href="mailto:jtech-bryan@proton.me">jtech-bryan@proton.me</a>
+      </p>
+    </main>
+
+    <footer>
+      <div>
+        <a href="index.html">Grokmate</a> · <a href="legal/terms.html">이용약관</a> ·
+        <a href="legal/privacy.html">개인정보 처리방침</a>
+      </div>
+      <span class="fine">© 2026 Grokmate. 비공식 독립 프로젝트. All rights reserved.</span>
+    </footer>
+  </body>
+</html>
