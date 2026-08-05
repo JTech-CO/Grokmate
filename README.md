@@ -10,7 +10,7 @@ Grokmate는 xAI Grok 4.3 위에서 동작하는 디스코드 봇으로, **범용
 
 **호출**: `그록아` · `Hey Grok` · `@Grokmate` · DM · **전용 AI 채널**(지정 시 멘션 없이) 중 하나로 부르면 응답합니다. 메시지마다 일반·검색·코딩·서버 관리·성인 모드를 자동 판정하고, 반말 친근체로 답합니다(한국어·영어, 서버별 존댓말).
 
-**주요 명령어**: 대표만 추렸습니다. 전체 44개와 자세한 설명은 [COMMANDS.md](COMMANDS.md) 또는 [소개 페이지](<https://jtech-co.github.io/Grokmate/>) 참고.
+**주요 명령어**: 대표만 추렸습니다. 전체 45개와 자세한 설명은 [COMMANDS.md](COMMANDS.md) 또는 [소개 페이지](<https://jtech-co.github.io/Grokmate/>) 참고.
 
 _누구나_
 
@@ -22,7 +22,7 @@ _누구나_
 _서버 관리 (스태프·관리자)_
 
 - 모더레이션: `/warn` `/pardon` `/timeout` `/kick` `/ban` `/unban` `/purge` `/slowmode` `/lock`
-- 서버 설정: `/config` `/nsfw-policy` `/welcome` `/autorole` `/reactionrole` `/voice-hub`
+- 서버 설정: `/config` `/nsfw-policy` `/welcome` `/autorole` `/reactionrole` `/voice-hub` `/custom` 커스텀 명령어·자동응답
 - 자연어로도 지시 가능(권한자 한정): "슬로우모드 10초로", "역할 부여" 등. 밴·킥·타임아웃·청소는 슬래시 + 확인 버튼 전용.
 
 _봇 운영자_
@@ -30,6 +30,8 @@ _봇 운영자_
 - `/maintenance` 점검 모드 · `/health` 상태 · `/cost` 토큰 집계 · `/audit` 감사 로그 · `/grant-tier` `/grant-list` 구독
 
 **음성 낭독(TTS)**: 사용자가 음성 채널에 들어오면 봇도 따라 들어가고, 사람이 다 나가면 나갑니다. `/tts` 로 문장을 읽히거나, 관리자가 지정한 채널의 채팅을 자동으로 읽게 할 수 있습니다(`/config tts-channel`). 목소리는 **사람마다** 고르고(유지), 재생 속도 0.8~1.5배는 음성방을 나가면 초기화됩니다. 링크·멘션·코드는 읽지 않고, AI 답변은 음성으로 내보내지 않습니다.
+
+**커스텀 명령어·자동응답**: 서버가 직접 만든 `!트리거` 명령과 키워드 자동응답에 고정 문구로 답합니다(AI 미경유라 토큰 소모 없음). 등록은 **스탭 이상**만 가능하고 **계정당 하루 5개**(요금제 무관, 지우면 회복)로 제한해 도배를 막습니다. `/custom list` 는 목록에서 바로 삭제·수정하는 패널이며, 관리자 이상은 서버 전체를, 스탭은 자신이 만든 것만 다룹니다.
 
 **그 외**: 게이팅된 성인 모드(연령제한 채널 + 서버 활성 + 연령 인증 + 성적 의도 **4중 게이트**), 자동 모더레이션(옵트인)·모더 로그 채널, 서버 합류 온보딩, 웹·X 실시간 검색(출처 표기), 24/7 운영(점검 모드·단일 인스턴스·우아한 종료·업스트림 타임아웃).
 
@@ -42,7 +44,7 @@ _봇 운영자_
 - **AI**: xAI Grok 4.3 (`@ai-sdk/xai` · `ai`)
 - **데이터**: SQLite + Drizzle ORM
 - **기타**: tesseract.js (OCR) · undici (안전한 URL fetch)
-- **품질**: Vitest (613 tests) · ESLint (+ `eslint-plugin-boundaries` 경계 강제) · Prettier · GitHub Actions CI(불변식 회귀 게이트 포함)
+- **품질**: Vitest (656 tests) · ESLint (+ `eslint-plugin-boundaries` 경계 강제) · Prettier · GitHub Actions CI(불변식 회귀 게이트 포함)
 
 ## 3. 봇 추가·사용 (Quick Start)
 

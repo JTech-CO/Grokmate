@@ -515,7 +515,7 @@
         >
         <a class="btn btn-ghost" href="#content">기능 보기</a>
       </div>
-      <span class="small">Grok 4.3 · 613 Tests · 비공식 프로젝트</span>
+      <span class="small">Grok 4.3 · 656 Tests · 비공식 프로젝트</span>
     </header>
 
     <main id="content">
@@ -563,6 +563,11 @@
               <strong>음성 낭독</strong>: 사용자가 음성 채널에 들어오면 봇도 따라 들어가고, 사람이 다 나가면 나갑니다. 지정 채널의
               채팅을 자동으로 읽어주며, 목소리는 사람마다 따로 고릅니다. 링크·멘션·코드는 읽지 않습니다.
             </li>
+            <li>
+              <strong>커스텀 명령어 · 자동응답</strong>: 서버가 직접 만든 <code>!트리거</code> 명령과 키워드 자동응답에도 반응합니다.
+              등록은 <strong>스탭 이상</strong>만 가능하고 계정당 하루 5개까지라, 도배로 서버가 어지러워지지 않습니다. AI를 거치지
+              않는 고정 문구라 토큰을 쓰지 않고 즉시 응답합니다.
+            </li>
           </ul>
         </section>
 
@@ -573,7 +578,7 @@
 
           <div class="cmdgroup">
             <h3>AI · 유틸 <span class="access">누구나</span></h3>
-            <div class="cmd"><span class="cmd-name">/help</span><span class="cmd-desc">명령어·기능 안내(본인만 표시)</span></div>
+            <div class="cmd"><span class="cmd-name">/help</span><span class="cmd-desc">명령어·기능 안내(본인만 표시). 버튼으로 일반 사용자 / 관리자 목록 전환</span></div>
             <div class="cmd"><span class="cmd-name">/usage</span><span class="cmd-desc">내 토큰 사용량·요금제 확인 및 업그레이드</span></div>
             <div class="cmd"><span class="cmd-name">/reset</span><span class="cmd-desc">나와 나눈 대화 맥락(기억) 초기화</span></div>
             <div class="cmd"><span class="cmd-name">/fetch</span><span class="cmd-desc">웹 페이지(URL)를 읽어 출처와 함께 요약</span></div>
@@ -631,6 +636,7 @@
             <div class="cmd"><span class="cmd-name">/voice-hub</span><span class="cmd-desc">임시 음성채널 허브(입장 시 개인 방 자동 생성)</span></div>
             <div class="cmd"><span class="cmd-name">/config tts-channel</span><span class="cmd-desc">채팅 자동 낭독 채널 지정: 그 채널 메시지를 음성으로 읽음</span></div>
             <div class="cmd"><span class="cmd-name">/config tts-voice</span><span class="cmd-desc">서버 기본 목소리(개인 설정이 없는 사람에게 적용)</span></div>
+            <div class="cmd"><span class="cmd-name">/custom</span><span class="cmd-desc">커스텀 명령어(!트리거)·자동응답 관리(스탭 이상, 계정당 하루 5개, 목록에서 바로 삭제·수정)</span></div>
           </div>
 
           <p class="note">
@@ -728,7 +734,7 @@
             <span class="chip">SQLite + Drizzle</span>
             <span class="chip">JSDoc + tsc</span>
             <span class="chip">eslint 경계 강제</span>
-            <span class="chip">Vitest · 613 Tests</span>
+            <span class="chip">Vitest · 656 Tests</span>
             <span class="chip">NSFW 안전 eval</span>
             <span class="chip">GitHub Actions CI</span>
             <span class="chip">INV-1~7</span>
