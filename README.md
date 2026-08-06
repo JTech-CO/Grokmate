@@ -10,7 +10,7 @@ Grokmate는 xAI Grok 4.3 위에서 동작하는 디스코드 봇으로, **범용
 
 **호출**: `그록아` · `Hey Grok` · `@Grokmate` · DM · **전용 AI 채널**(지정 시 멘션 없이) 중 하나로 부르면 응답합니다. 메시지마다 일반·검색·코딩·서버 관리·성인 모드를 자동 판정하고, 반말 친근체로 답합니다(한국어·영어, 서버별 존댓말).
 
-**주요 명령어**: 대표만 추렸습니다. 전체 45개와 자세한 설명은 [COMMANDS.md](COMMANDS.md) 또는 [소개 페이지](<https://jtech-co.github.io/Grokmate/>) 참고.
+**주요 명령어**: 대표만 추렸습니다. 전체 46개와 자세한 설명은 [COMMANDS.md](COMMANDS.md) 또는 [소개 페이지](<https://jtech-co.github.io/Grokmate/>) 참고.
 
 _누구나_
 
@@ -22,12 +22,12 @@ _누구나_
 _서버 관리 (스태프·관리자)_
 
 - 모더레이션: `/warn` `/pardon` `/timeout` `/kick` `/ban` `/unban` `/purge` `/slowmode` `/lock`
-- 서버 설정: `/config` `/nsfw-policy` `/welcome` `/autorole` `/reactionrole` `/voice-hub` `/custom` 커스텀 명령어·자동응답
+- 서버 설정: `/config status` 설정 패널(버튼·셀렉트) · `/nsfw-policy` `/welcome` `/autorole` `/reactionrole` `/voice-hub` `/custom` 커스텀 명령어·자동응답
 - 자연어로도 지시 가능(권한자 한정): "슬로우모드 10초로", "역할 부여" 등. 밴·킥·타임아웃·청소는 슬래시 + 확인 버튼 전용.
 
 _봇 운영자_
 
-- `/maintenance` 점검 모드 · `/health` 상태 · `/cost` 토큰 집계 · `/audit` 감사 로그 · `/grant-tier` `/grant-list` 구독
+- `/maintenance` 점검 모드 · `/health` 상태 · `/guilds` 서버 대시보드 · `/cost` 토큰 집계 · `/audit` 감사 로그 · `/grant-tier` `/grant-list` 구독
 
 **음성 낭독(TTS)**: 사용자가 음성 채널에 들어오면 봇도 따라 들어가고, 사람이 다 나가면 나갑니다. `/tts` 로 문장을 읽히거나, 관리자가 지정한 채널의 채팅을 자동으로 읽게 할 수 있습니다(`/config tts-channel`). 목소리는 **사람마다** 고르고(유지), 재생 속도 0.8~1.5배는 음성방을 나가면 초기화됩니다. 링크·멘션·코드는 읽지 않고, AI 답변은 음성으로 내보내지 않습니다.
 
@@ -46,7 +46,7 @@ _봇 운영자_
 - **AI**: xAI Grok 4.3 (`@ai-sdk/xai` · `ai`)
 - **데이터**: SQLite + Drizzle ORM
 - **기타**: tesseract.js (OCR) · undici (안전한 URL fetch)
-- **품질**: Vitest (678 tests) · ESLint (+ `eslint-plugin-boundaries` 경계 강제) · Prettier · GitHub Actions CI(불변식 회귀 게이트 포함)
+- **품질**: Vitest (758 tests) · ESLint (+ `eslint-plugin-boundaries` 경계 강제) · Prettier · GitHub Actions CI(불변식 회귀 게이트 포함)
 
 ## 3. 봇 추가·사용 (Quick Start)
 

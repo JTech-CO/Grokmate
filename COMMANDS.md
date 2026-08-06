@@ -87,7 +87,8 @@
 
 | 명령 | 설명 |
 |---|---|
-| `/config <status\|reset\|honorific\|manage-via-nl\|automod\|ai-channel\|log-channel\|tts-channel\|tts-voice\|staff\|admin>` | 서버 설정: 전용 AI 채널·존댓말·자연어 관리·자동 모더레이션·모더 로그 채널·**TTS 자동 낭독 채널·서버 기본 목소리**·스탭/관리 역할·전체 초기화 |
+| `/config status` | **서버 설정 패널**: 버튼·셀렉트로 바로 변경. 섹션 4종(기본·채널·역할·TTS), 채널·역할은 한 번에 교체 |
+| `/config <reset\|honorific\|manage-via-nl\|automod\|ai-channel\|log-channel\|tts-channel\|tts-voice\|staff\|admin>` | 같은 설정을 슬래시로 직접 지정(패널을 안 거치고 싶을 때) |
 | `/welcome <set\|goodbye\|off\|status\|test>` | 가입/퇴장 환영·작별 메시지 |
 | `/autorole <set\|off\|status>` | 가입 시 자동 역할 |
 | `/reactionrole <add\|remove\|list>` | 메시지 반응 → 역할 자동 부여 |
@@ -106,6 +107,7 @@
 | `/maintenance <on/off> [message]` | 점검 모드: 켜면 점검이 끝날 때까지 모든 대화·명령에 "점검 중입니다" 안내(재시작해도 유지) |
 | `/cost` | 토큰 사용량 집계(오늘·최근 7일) |
 | `/health` | 봇 상태: 가동률(24시간·7일·30일)·재시작 횟수·동시성·OCR 대기·업타임·메모리·점검 모드 |
+| `/guilds` | 소속 서버 대시보드: 서버명·멤버 수·채널 목록(연령제한 여부 표시)·설정 요약·마지막 활동 |
 | `/audit` | 최근 권한(관리 액션) 감사 로그 |
 | `/grant-tier`·`/grant-list` | 유료 티어 수동 부여·활성 구독 조회 |
 

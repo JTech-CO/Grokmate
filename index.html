@@ -515,7 +515,7 @@
         >
         <a class="btn btn-ghost" href="#content">기능 보기</a>
       </div>
-      <span class="small">Grok 4.3 · 678 Tests · 비공식 프로젝트</span>
+      <span class="small">Grok 4.3 · 758 Tests · 비공식 프로젝트</span>
     </header>
 
     <main id="content">
@@ -627,7 +627,8 @@
 
           <div class="cmdgroup">
             <h3>서버 설정 <span class="access">관리자</span></h3>
-            <div class="cmd"><span class="cmd-name">/config</span><span class="cmd-desc">서버 설정: 전용 AI 채널·존댓말·자연어 관리·자동 모더·모더 로그 채널·스태프/관리 역할·전체 초기화</span></div>
+            <div class="cmd"><span class="cmd-name">/config status</span><span class="cmd-desc">서버 설정 패널: 버튼·셀렉트로 바로 변경(기본·채널·역할·TTS 4개 탭). 채널·역할은 한 번에 교체</span></div>
+            <div class="cmd"><span class="cmd-name">/config</span><span class="cmd-desc">같은 설정을 슬래시로 직접 지정: 존댓말·자연어 관리·자동 모더·전용 AI 채널·모더 로그·스태프/관리 역할·전체 초기화</span></div>
             <div class="cmd"><span class="cmd-name">/nsfw-policy</span><span class="cmd-desc">서버 성인 모드 기능 켜기/끄기(연령 제한 채널 한정)</span></div>
             <div class="cmd"><span class="cmd-name">/create-channel · /delete-channel</span><span class="cmd-desc">채널 생성·삭제(삭제는 확인 버튼)</span></div>
             <div class="cmd"><span class="cmd-name">/welcome</span><span class="cmd-desc">가입·퇴장 환영·작별 메시지</span></div>
@@ -654,6 +655,7 @@
             <h3>운영 · 관측 <span class="access">봇 운영자</span></h3>
             <div class="cmd"><span class="cmd-name">/maintenance</span><span class="cmd-desc">점검 모드 켜기/끄기: 켜면 전원에게 '점검 중입니다' 안내(재시작해도 유지)</span></div>
             <div class="cmd"><span class="cmd-name">/health</span><span class="cmd-desc">봇 상태: 가동률(24시간·7일·30일)·재시작 횟수·동시성·OCR 대기·메모리·점검 모드</span></div>
+            <div class="cmd"><span class="cmd-name">/guilds</span><span class="cmd-desc">소속 서버 대시보드: 서버·멤버·채널(연령제한 표시)·설정 요약·마지막 활동</span></div>
             <div class="cmd"><span class="cmd-name">/cost</span><span class="cmd-desc">토큰 사용량 집계(오늘·최근 7일)</span></div>
             <div class="cmd"><span class="cmd-name">/audit</span><span class="cmd-desc">최근 권한(관리 액션) 감사 로그</span></div>
             <div class="cmd"><span class="cmd-name">/grant-tier · /grant-list</span><span class="cmd-desc">유료 티어 수동 부여·활성 구독 조회</span></div>
@@ -734,7 +736,7 @@
             <span class="chip">SQLite + Drizzle</span>
             <span class="chip">JSDoc + tsc</span>
             <span class="chip">eslint 경계 강제</span>
-            <span class="chip">Vitest · 678 Tests</span>
+            <span class="chip">Vitest · 758 Tests</span>
             <span class="chip">NSFW 안전 eval</span>
             <span class="chip">GitHub Actions CI</span>
             <span class="chip">INV-1~7</span>
