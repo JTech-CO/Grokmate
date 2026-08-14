@@ -329,7 +329,7 @@
       <nav class="topnav"><a href="index.html">← Grokmate</a></nav>
       <div class="badge">Changelog</div>
       <h1>변경 이력</h1>
-      <p class="meta">최종 갱신: 2026-08-08</p>
+      <p class="meta">최종 갱신: 2026-08-15</p>
     </header>
 
     <main>
@@ -349,6 +349,8 @@
       <nav class="toc" aria-label="날짜 목차">
         <h2>날짜</h2>
         <ul>
+          <li><a href="#d20260814">2026-08-14</a></li>
+          <li><a href="#d20260811">2026-08-11</a></li>
           <li><a href="#d20260808">2026-08-08</a></li>
           <li><a href="#d20260806">2026-08-06</a></li>
           <li><a href="#d20260805">2026-08-05</a></li>
@@ -366,6 +368,72 @@
           <li><a href="#d20260613">2026-06-13 ~ 06-17</a></li>
         </ul>
       </nav>
+
+      <section id="d20260814">
+        <h2>2026-08-14</h2>
+        <ul class="entries">
+          <li>
+            <span class="tag">추가</span>
+            <div class="entry">
+              <strong><code>/hn</code> Hacker News 검색</strong>: 키워드로 글을 찾고
+              <strong>인기순·최신순·댓글순</strong>으로 정렬, 기간은 24시간·1주·1개월·1년·전체 중 선택, 개수도 지정.
+              결과에 원문 링크와 HN 토론 링크를 함께 표시
+              <ul class="sub">
+                <li>
+                  <strong>말로 시켜도</strong> 됩니다(<code>해커뉴스</code> · <code>Hacker News</code> ·
+                  <code>HN</code> 모두 인식). "해커뉴스에서 Machine Learning 다룬 최신 기사 3개만 찾아줘" 처럼 하면
+                  <strong>정렬·기간·개수까지</strong> 알아듣습니다("3개만"·"세 개"·"top 5", <code>last week</code> ·
+                  <code>yesterday</code>)
+                </li>
+                <li>
+                  이름만 말한 건 검색으로 치지 않습니다. "Hacker News API 어떻게 써?" 처럼
+                  <strong>HN에 대해 묻는 말</strong>은 평소처럼 AI가 답합니다
+                </li>
+                <li>
+                  <strong>AI를 거치지 않아 토큰을 쓰지 않음</strong> — 일일 한도가 줄지 않습니다. 커스텀 명령어와 같은
+                  취급
+                </li>
+                <li>
+                  HN은 영어권 사이트라 영어 키워드가 잘 맞습니다. 한국어가 섞여 결과가 없으면
+                  <strong>영어 부분으로 한 번 더 찾고</strong> 그렇게 했다고 밝힙니다(처음부터 영어만 쓰면 "의료 AI"를
+                  "AI"로 바꿔 찾는 셈이라 묻지 않은 걸 답하게 됩니다)
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <span class="tag">보안</span>
+            <div class="entry">
+              HN 글 제목·링크는 외부 사용자가 올린 것이라, 표시 전에 안전 필터를 거치고 성인 관련 항목은 연령제한
+              채널에서만 보여줍니다(제외한 건수는 밝힘). 제목에 <code>@everyone</code> 이 있어도 알림이 가지 않음
+            </div>
+          </li>
+          <li>
+            <span class="tag">변경</span>
+            <div class="entry">
+              링크를 디스코드·카카오톡에 공유하면 소개 페이지 미리보기 카드가 제대로 뜨도록 전용 이미지 추가(종전에는
+              작은 정사각 로고)
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <section id="d20260811">
+        <h2>2026-08-11</h2>
+        <ul class="entries">
+          <li>
+            <span class="tag">변경</span>
+            <div class="entry">
+              <strong>일일 토큰 한도 초기화 시각을 한국시간 자정으로</strong> 변경(종전 UTC 자정 = 한국시간 오전 9시).
+              밤에 한도를 다 쓰면 다음 날 아침 9시까지 기다려야 했던 문제 해소
+              <ul class="sub">
+                <li><code>/tts</code> 문자 한도도 같은 시각에 초기화됩니다</li>
+                <li><a href="legal/terms.html">약관 §9</a> 문구도 함께 정정</li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </section>
 
       <section id="d20260808">
         <h2>2026-08-08</h2>
