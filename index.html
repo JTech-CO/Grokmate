@@ -12,13 +12,30 @@
     <link rel="icon" type="image/png" href="assets/logo-64.png" />
     <link rel="apple-touch-icon" href="assets/logo.png" />
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Grokmate" />
+    <meta property="og:locale" content="ko_KR" />
+    <meta property="og:url" content="https://jtech-co.github.io/Grokmate/" />
     <meta property="og:title" content="Grokmate | Grok 4.3 Discord AI" />
     <meta
       property="og:description"
       content="대화·검색·코딩·서버 관리를 하나로. 인가는 요청자 권한 단일 게이트, 미성년·NSFW 누출은 0."
     />
-    <meta property="og:image" content="https://jtech-co.github.io/Grokmate/assets/logo.png" />
-    <meta name="twitter:card" content="summary" />
+    <!-- 소셜 카드는 1.91:1 전용 이미지(assets/og.png). 정사각 로고를 쓰면 작은 썸네일로 줄어든다.
+         절대 URL 필수 — 크롤러는 상대 경로를 해석하지 않는다. 갱신: python scripts/gen-og-image.py -->
+    <meta property="og:image" content="https://jtech-co.github.io/Grokmate/assets/og.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Grokmate: 권한 안에서 끝까지 해내는 AI" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Grokmate | Grok 4.3 Discord AI" />
+    <meta
+      name="twitter:description"
+      content="대화·검색·코딩·서버 관리를 하나로. 인가는 요청자 권한 단일 게이트, 미성년·NSFW 누출은 0."
+    />
+    <meta name="twitter:image" content="https://jtech-co.github.io/Grokmate/assets/og.png" />
+    <meta name="twitter:image:alt" content="Grokmate: 권한 안에서 끝까지 해내는 AI" />
+    <link rel="canonical" href="https://jtech-co.github.io/Grokmate/" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -832,7 +849,7 @@
     <div class="stats">
       <div class="wrap">
         <div class="stat"><b>46</b><span>슬래시 명령</span></div>
-        <div class="stat"><b>758</b><span>자동 테스트</span></div>
+        <div class="stat"><b>776</b><span>자동 테스트</span></div>
         <div class="stat"><b>7</b><span>불변식(INVARIANTS)</span></div>
         <div class="stat"><b>0</b><span>권한 상승 허용</span></div>
       </div>
@@ -975,7 +992,9 @@
               <div class="gate-join">AND</div>
               <div class="gate-step">
                 <i>03</i>
-                <div><b>사용자</b><span>만 19세 이상 연령 인증을 마쳤을 것</span></div>
+                <div>
+                  <b>사용자</b><span><code>/verify-age</code> 로 <strong>각자 한 번</strong> 만 19세 이상 인증</span>
+                </div>
               </div>
               <div class="gate-join">AND</div>
               <div class="gate-step">
@@ -992,6 +1011,11 @@
                 <li>
                   <strong>미성년 관련 성적 콘텐츠는 게이트와 무관하게 무조건 차단</strong>됩니다. 입력과 출력 양쪽에서
                   검사하며, 어떤 우회 시도에도 예외가 없습니다.
+                </li>
+                <li>
+                  3번은 <strong>디스코드 자체 연령 확인과 별개</strong>입니다. 서버에서 확인을 마쳤어도 그 결과는
+                  봇에게 전달되지 않아, 대화할 사람이 각자 한 번 <code>/verify-age</code> 를 눌러야 합니다. 여기서
+                  가장 많이 막힙니다.
                 </li>
                 <li>모드는 <strong>발화 단위</strong>로 판정합니다. 성인 채널이어도 일상 질문에는 평소 톤으로 답합니다.</li>
                 <li>성인물은 폭력·고어와 결합하지 않습니다. AI 답변은 음성으로 내보내지 않습니다.</li>
@@ -1252,7 +1276,7 @@ DM</pre>
             <p class="kicker">Pricing</p>
             <h2>무료로 충분히, 필요하면 더</h2>
             <p>
-              한도는 대화 횟수가 아니라 실제로 쓴 <strong>토큰</strong> 기준입니다. 매일 00:00(UTC)에 초기화됩니다.
+              한도는 대화 횟수가 아니라 실제로 쓴 <strong>토큰</strong> 기준입니다. 매일 00:00(한국시간, KST)에 초기화됩니다.
             </p>
           </div>
           <div class="plans">
@@ -1341,7 +1365,7 @@ DM</pre>
             <span class="chip">SQLite + Drizzle</span>
             <span class="chip">JSDoc + tsc</span>
             <span class="chip">eslint 경계 강제</span>
-            <span class="chip">Vitest · 758 Tests</span>
+            <span class="chip">Vitest · 776 Tests</span>
             <span class="chip">NSFW 안전 eval</span>
             <span class="chip">GitHub Actions CI</span>
             <span class="chip">INV-1~7</span>
