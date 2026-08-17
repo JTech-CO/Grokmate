@@ -329,7 +329,7 @@
       <nav class="topnav"><a href="index.html">← Grokmate</a></nav>
       <div class="badge">Changelog</div>
       <h1>변경 이력</h1>
-      <p class="meta">최종 갱신: 2026-08-15</p>
+      <p class="meta">최종 갱신: 2026-08-18</p>
     </header>
 
     <main>
@@ -349,6 +349,7 @@
       <nav class="toc" aria-label="날짜 목차">
         <h2>날짜</h2>
         <ul>
+          <li><a href="#d20260818">2026-08-18</a></li>
           <li><a href="#d20260814">2026-08-14</a></li>
           <li><a href="#d20260811">2026-08-11</a></li>
           <li><a href="#d20260808">2026-08-08</a></li>
@@ -368,6 +369,47 @@
           <li><a href="#d20260613">2026-06-13 ~ 06-17</a></li>
         </ul>
       </nav>
+
+      <section id="d20260818">
+        <h2>2026-08-18</h2>
+        <ul class="entries">
+          <li>
+            <span class="tag">추가</span>
+            <div class="entry">
+              <strong>GitLab 조회</strong>: <code>/gl-repo</code> 프로젝트 검색 · <code>/gl-user</code> 유저·그룹의
+              프로젝트 목록 · <code>/gl-file</code> 파일 내용·디렉터리 개요. 기존 GitHub 명령과 짝이 맞습니다
+              <ul class="sub">
+                <li>
+                  <strong>중첩 그룹</strong>을 지원합니다(<code>group/subgroup/project</code>). 웹 주소를 그대로
+                  붙여넣어도 되고, 브랜치를 지정할 수도 있습니다
+                </li>
+                <li>
+                  <code>/gl-user</code> 는 유저와 그룹을 모두 찾고 어느 쪽인지 표시합니다. 그룹은 하위 그룹의
+                  프로젝트까지 함께 보여줍니다
+                </li>
+                <li>
+                  GitLab 검색은 <strong>3글자 이상</strong>이어야 결과가 나옵니다. 짧으면 정확히 일치하는 것만
+                  찾아서 "게임"·"번역" 같은 두 글자 한국어는 결과가 비는데, 이제 그렇게 안내합니다
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <span class="tag">보안</span>
+            <div class="entry">
+              GitLab 프로젝트 이름·설명은 누구나 정하는 값이라, 표시 전에 정제합니다. 링크처럼 보이게 만드는 표기를
+              무력화하고(가짜 "공식 다운로드" 방지), 디스코드 초대 링크는 끊고, 보이지 않는 문자는 제거합니다
+            </div>
+          </li>
+          <li>
+            <span class="tag">변경</span>
+            <div class="entry">
+              <a href="legal/privacy.html">개인정보 처리방침 §4</a> 에 GitLab 을 추가했습니다. 조회 요청(검색어·경로)만
+              전송되며 이용자·서버 식별자는 함께 보내지 않습니다
+            </div>
+          </li>
+        </ul>
+      </section>
 
       <section id="d20260814">
         <h2>2026-08-14</h2>

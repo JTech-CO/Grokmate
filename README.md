@@ -12,12 +12,12 @@ Grokmate는 xAI Grok 4.3 위에서 동작하는 디스코드 봇으로, **범용
 
 **호출**: `그록아` · `Hey Grok` · `@Grokmate` · DM · **전용 AI 채널**(지정 시 멘션 없이) 중 하나로 부르면 응답합니다. 메시지마다 일반·검색·코딩·서버 관리·성인 모드를 자동 판정하고, 반말 친근체로 답합니다(한국어·영어, 서버별 존댓말).
 
-**주요 명령어**: 대표만 추렸습니다. 전체 47개와 자세한 설명은 [COMMANDS.md](COMMANDS.md) 또는 [소개 페이지](<https://jtech-co.github.io/Grokmate/>) 참고.
+**주요 명령어**: 대표만 추렸습니다. 전체 50개와 자세한 설명은 [COMMANDS.md](COMMANDS.md) 또는 [소개 페이지](<https://jtech-co.github.io/Grokmate/>) 참고.
 
 _누구나_
 
 - `/help` 안내 · `/usage` 사용량·요금제 · `/reset` 대화 초기화 · `/debug` 진단(시각·핑·시스템·네트워크 속도)
-- `/fetch` URL 요약 · `/translate` 이미지 번역(OCR) · `/repo` `/gh-user` `/gh-file` GitHub 조회 · `/hn` Hacker News 검색
+- `/fetch` URL 요약 · `/translate` 이미지 번역(OCR) · `/repo` `/gh-user` `/gh-file` GitHub 조회 · `/gl-repo` `/gl-user` `/gl-file` GitLab 조회 · `/hn` Hacker News 검색
 - `/poll` 투표 · `/level` `/leaderboard` 레벨 · `/voice` 임시 음성방 · `/verify-age` 성인 인증
 - `/tts` 음성 낭독 · `/tts-stop` 멈춤 · `/tts-settings` 내 목소리·재생 속도
 
@@ -50,7 +50,7 @@ _봇 운영자_
 - **AI**: xAI Grok 4.3 (`@ai-sdk/xai` · `ai`)
 - **데이터**: SQLite + Drizzle ORM
 - **기타**: tesseract.js (OCR) · undici (안전한 URL fetch)
-- **품질**: Vitest (858 tests) · ESLint (+ `eslint-plugin-boundaries` 경계 강제) · Prettier · GitHub Actions CI(불변식 회귀 게이트 포함)
+- **품질**: Vitest (879 tests) · ESLint (+ `eslint-plugin-boundaries` 경계 강제) · Prettier · GitHub Actions CI(불변식 회귀 게이트 포함)
 
 ## 3. 봇 추가·사용 (Quick Start)
 
