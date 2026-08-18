@@ -290,7 +290,7 @@
       <nav class="topnav"><a href="../index.html">← Grokmate</a></nav>
       <div class="badge">Legal · Privacy</div>
       <h1>개인정보 처리방침</h1>
-      <p class="meta">시행일: 2026-07-08 · 최종 개정: 2026-08-18</p>
+      <p class="meta">시행일: 2026-07-08 · 최종 개정: 2026-08-19</p>
     </header>
 
     <main>
@@ -430,6 +430,7 @@
           <li><strong>웹 / X 검색</strong>: 검색 모드 이용 시 검색 질의가 xAI 서버사이드 검색 도구로 전송됩니다.</li>
           <li><strong>GitHub API</strong>: <code>/repo</code>·<code>/gh-user</code>·<code>/gh-file</code> 이용 시 조회 요청이 전송됩니다.</li>
           <li><strong>GitLab API</strong>: <code>/gl-repo</code>·<code>/gl-user</code>·<code>/gl-file</code> 이용 시 조회 요청(검색어·경로)이 전송됩니다. 이용자·서버 식별자는 함께 보내지 않으며 xAI를 거치지 않습니다.</li>
+          <li><strong>Hugging Face Hub API</strong>: <code>/hf-repo</code>·<code>/hf-user</code>·<code>/hf-file</code> 이용 시 조회 요청(검색어·경로)이 전송됩니다. 이용자·서버 식별자는 함께 보내지 않으며 xAI를 거치지 않습니다.</li>
           <li><strong>Hacker News 검색 (Algolia)</strong>: <code>/hn</code> 또는 자연어 HN 요청 시 <strong>검색어</strong>가 Hacker News 검색 API(hn.algolia.com)로 전송됩니다. 이용자·서버 식별자는 함께 보내지 않으며, 이 기능은 xAI를 거치지 않습니다.</li>
           <li><strong>이용자가 지정한 URL</strong>: <code>/fetch</code> 또는 자연어 링크 읽기 이용 시 해당 페이지를 가져옵니다.</li>
           <li><strong>Cloudflare</strong>: <code>/debug</code> 의 네트워크 속도 측정 시 공개 speed 엔드포인트와 더미 데이터(무의미한 바이트)만 주고받습니다. 이용자 데이터·개인정보는 전송하지 않습니다.</li>

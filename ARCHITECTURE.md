@@ -9,12 +9,12 @@ Grokmate는 "기능을 더하기 전에 경계와 불변식을 먼저 고정한�
 모듈은 단방향 의존으로 배치되고, 위반은 lint(`eslint-plugin-boundaries`)로 차단됩니다.
 
 ```
-config  →  grok · github · web · ocr · billing · db · auth  →  discord · moderation · nsfw · tools  →  core
+config  →  grok · github · gitlab · hf · web · ocr · billing · db · auth  →  discord · moderation · nsfw · tools  →  core
 ```
 
 - **config**: 환경/시크릿 로딩의 유일한 지점.
 - **grok**: xAI Grok API 호출의 유일한 진입점(대화·검색·**음성 합성(TTS)** 포함).
-- **github / web**: 외부 데이터(공개 레포 / 임의 URL) 접근 전용 모듈.
+- **github / gitlab / hf / web**: 외부 데이터(GitHub·GitLab·허깅페이스 공개 레포 / 임의 URL) 접근 전용 모듈. 각자 자기 API 만 알고 서로를 모른다. **hn**(Hacker News)은 키가 필요 없어 config 조차 읽지 않는다(최소 권한).
 - **ocr**: 이미지 텍스트 추출(로컬 WASM). **billing**: 요금제·토큰 쿼터.
 - **db**: 영속·캐시(리포지토리 패턴).
 - **auth**: 인가 단일 통제점(순수 판정). nsfw/moderation/tools 를 import 하지 않음.

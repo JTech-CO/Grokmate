@@ -1,6 +1,6 @@
 # 개인정보 처리방침 (Privacy Policy)
 
-**시행일: 2026-07-08 · 최종 개정: 2026-08-18**
+**시행일: 2026-07-08 · 최종 개정: 2026-08-19**
 
 > 정식 게시본(HTML): [`legal/privacy.html`](legal/privacy.html). 이 문서는 GitHub 열람용 요약이며, 내용이 다를 경우 HTML 게시본이 우선합니다. 함께 [이용약관](legal/terms.html)도 확인하세요.
 
@@ -47,6 +47,7 @@ Grokmate("봇")가 디스코드에서 사용자 데이터를 어떻게 처리하
 - **웹 / X 검색**: 검색 모드 사용 시 검색 질의 전송.
 - **GitHub API**: `/repo`·`/gh-user`·`/gh-file` 사용 시.
 - **GitLab API**: `/gl-repo`·`/gl-user`·`/gl-file` 사용 시 조회 요청(검색어·경로)만 전송(이용자·서버 식별자 미전송, xAI 미경유).
+- **Hugging Face Hub API**: `/hf-repo`·`/hf-user`·`/hf-file` 사용 시 조회 요청(검색어·경로)만 전송(이용자·서버 식별자 미전송, xAI 미경유).
 - **Hacker News 검색 (Algolia)**: `/hn` 또는 자연어 HN 요청 시 **검색어**만 전송(이용자·서버 식별자 미전송, xAI 미경유).
 - **사용자가 지정한 URL**: `/fetch`·자연어 링크 읽기 사용 시 해당 페이지를 가져옴.
 - **Cloudflare**: `/debug` 네트워크 속도 측정 시 공개 speed 엔드포인트와 더미 데이터만 주고받음(이용자 데이터·개인정보 미전송).
