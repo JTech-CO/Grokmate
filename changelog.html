@@ -377,6 +377,47 @@
           <li>
             <span class="tag">추가</span>
             <div class="entry">
+              <strong>긴 대화의 앞부분을 기억합니다</strong>: 예전에는 최근 20개 메시지를 넘어가면 앞 내용이 그냥
+              사라졌고, 봇을 재시작하면 모든 대화가 백지가 됐습니다. 이제 밀려난 앞부분을 짧은 요약으로 압축해 두고
+              이후 대화에 참고합니다
+              <ul class="sub">
+                <li>
+                  <strong>재시작해도 이어집니다.</strong> 이름·선호·진행 중인 작업처럼 앞에서 말한 것을 계속
+                  기억합니다
+                </li>
+                <li>
+                  요약이지 원문이 아니라서 세부는 빠질 수 있습니다. 봇도 그 사실을 알고 있어서 확실하지 않으면
+                  되묻습니다
+                </li>
+                <li>
+                  <code>/reset</code> 을 쓰면 최근 대화창과 <strong>저장된 요약을 함께</strong> 지웁니다. "잊었다"고
+                  해놓고 기억하는 일은 없습니다
+                </li>
+                <li>
+                  한 번에 보내는 대화량에 글자 상한이 생겨, 긴 글을 여러 번 붙여넣어도 대화가 무거워지지 않습니다
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <span class="tag">보안</span>
+            <div class="entry">
+              요약은 <strong>성적인 내용이 포함된 대화에는 만들지 않습니다.</strong> 요약은 이후 모든 대화에 참고
+              자료로 들어가는데, 성인 맥락이 거기 남으면 일반 대화에 새어 나올 수 있기 때문입니다. 요약에 담긴 문장은
+              봇에게 <strong>지시가 아니라 참고 자료</strong>로만 전달됩니다
+            </div>
+          </li>
+          <li>
+            <span class="tag">변경</span>
+            <div class="entry">
+              <a href="legal/privacy.html">개인정보 처리방침</a> 에 <strong>대화 요약</strong> 항목을 추가하고,
+              "대화 맥락은 재시작 시 소멸" 문구를 실제 동작에 맞게 고쳤습니다(원문은 소멸, 요약은 유지 ·
+              <code>/reset</code> 으로 삭제)
+            </div>
+          </li>
+          <li>
+            <span class="tag">추가</span>
+            <div class="entry">
               <strong>서버별 운영 대시보드</strong> (<code>/guilds</code>, 운영자): 서버를 골라 그 서버만
               <strong>일시정지/재개</strong>하거나, <strong>런타임 초기화</strong>(대화 맥락 + 설정 캐시),
               <strong>대화 맥락만 초기화</strong>, <strong>성인 모드 끄기</strong>,
