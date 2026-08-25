@@ -12,7 +12,7 @@ Grokmate는 xAI Grok 4.3 위에서 동작하는 디스코드 봇으로, **범용
 
 **호출**: `그록아` · `Hey Grok` · `@Grokmate` · DM · **전용 AI 채널**(지정 시 멘션 없이) 중 하나로 부르면 응답합니다. 메시지마다 일반·검색·코딩·서버 관리·성인 모드를 자동 판정하고, 반말 친근체로 답합니다(한국어·영어, 서버별 존댓말).
 
-**주요 명령어**: 대표만 추렸습니다. 전체 54개와 자세한 설명은 [COMMANDS.md](COMMANDS.md) 또는 [소개 페이지](<https://jtech-co.github.io/Grokmate/>) 참고.
+**주요 명령어**: 대표만 추렸습니다. 전체 55개와 자세한 설명은 [COMMANDS.md](COMMANDS.md) 또는 [소개 페이지](<https://jtech-co.github.io/Grokmate/>) 참고.
 
 _누구나_
 
@@ -24,7 +24,7 @@ _누구나_
 _서버 관리 (스태프·관리자)_
 
 - 모더레이션: `/warn` `/pardon` `/timeout` `/kick` `/ban` `/unban` `/purge` `/slowmode` `/lock`
-- 서버 설정: `/config status` 설정 패널(버튼·셀렉트) · `/nsfw-policy` `/welcome` `/autorole` `/reactionrole` `/voice-hub` `/custom` 커스텀 명령어·자동응답
+- 서버 설정: `/config status` 설정 패널(버튼·셀렉트) · `/kb` 서버 지식베이스 · `/nsfw-policy` `/welcome` `/autorole` `/reactionrole` `/voice-hub` `/custom` 커스텀 명령어·자동응답
 - 자연어로도 지시 가능(권한자 한정): "슬로우모드 10초로", "역할 부여" 등. 밴·킥·타임아웃·청소는 슬래시 + 확인 버튼 전용.
 
 _봇 운영자_

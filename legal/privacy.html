@@ -361,6 +361,11 @@
                 <td>긴 대화의 앞 맥락 유지. <code>/reset</code> 으로 삭제</td>
               </tr>
               <tr>
+                <td>서버 지식베이스 문서</td>
+                <td>서버 관리자가 <code>/kb</code> 로 직접 등록한 문서(규칙·공지·FAQ 등)</td>
+                <td>관련 질문에 근거로 사용. 색인을 위해 xAI에 저장(§4)</td>
+              </tr>
+              <tr>
                 <td>모더레이션·경고</td>
                 <td>자동 모더레이션 로그, 경고 기록(대상·발부자·사유·시각), 관리 감사 로그(행위자·액션·대상·결과·시각)</td>
                 <td>규칙 집행, 책임 추적·오남용 방지</td>
@@ -433,6 +438,7 @@
         <ul>
           <li><strong>대화 원문</strong> 및 일부 레이트리밋·쿨다운 상태: 인메모리, 단기. 봇 재시작 시 소멸.</li>
           <li><strong>대화 요약</strong>: 데이터베이스에 저장되어 재시작 후에도 유지. <code>/reset</code> 또는 서버 단위 초기화 시 삭제.</li>
+          <li><strong>서버 지식베이스 문서</strong>: 검색 색인을 위해 <strong>xAI에 저장</strong>(원문 보관). <code>/kb remove</code>·<code>/kb clear</code> 로 지우면 xAI 쪽에서도 함께 삭제되며, 봇이 서버에서 제거되면 자동으로 정리됩니다.</li>
           <li><strong>서버 설정·연령 인증·레벨·경고·감사 로그·사용량·구독</strong>: 봇 운영용 데이터베이스에 저장.</li>
           <li>위 데이터는 해당 기능이 유효한 동안 또는 목적 달성에 필요한 기간 동안 보관되며, 봇이 서버에서 제거되거나 이용자가 삭제를 요청하면 처리·보관을 중단·삭제합니다(감사·법적 의무상 최소 기간 보관이 필요한 항목 제외).</li>
         </ul>
@@ -448,6 +454,7 @@
           <li><strong>GitHub API</strong>: <code>/repo</code>·<code>/gh-user</code>·<code>/gh-file</code> 이용 시 조회 요청이 전송됩니다.</li>
           <li><strong>GitLab API</strong>: <code>/gl-repo</code>·<code>/gl-user</code>·<code>/gl-file</code> 이용 시 조회 요청(검색어·경로)이 전송됩니다. 이용자·서버 식별자는 함께 보내지 않으며 xAI를 거치지 않습니다.</li>
           <li><strong>Hugging Face Hub API</strong>: <code>/hf-repo</code>·<code>/hf-user</code>·<code>/hf-file</code> 이용 시 조회 요청(검색어·경로)이 전송됩니다. 이용자·서버 식별자는 함께 보내지 않으며 xAI를 거치지 않습니다.</li>
+          <li><strong>xAI (지식베이스)</strong>: <code>/kb</code> 로 등록한 문서가 <strong>xAI에 업로드·저장</strong>되어 임베딩 색인됩니다. 대화 중 관련 질문이 오면 그 문서를 검색해 근거로 답합니다. 등록은 서버 관리자만 할 수 있고, 삭제하면 xAI 쪽도 함께 지워집니다.</li>
           <li><strong>Hacker News 검색 (Algolia)</strong>: <code>/hn</code> 또는 자연어 HN 요청 시 <strong>검색어</strong>가 Hacker News 검색 API(hn.algolia.com)로 전송됩니다. 이용자·서버 식별자는 함께 보내지 않으며, 이 기능은 xAI를 거치지 않습니다.</li>
           <li><strong>이용자가 지정한 URL</strong>: <code>/fetch</code> 또는 자연어 링크 읽기 이용 시 해당 페이지를 가져옵니다.</li>
           <li><strong>Cloudflare</strong>: <code>/debug</code> 의 네트워크 속도 측정 시 공개 speed 엔드포인트와 더미 데이터(무의미한 바이트)만 주고받습니다. 이용자 데이터·개인정보는 전송하지 않습니다.</li>
